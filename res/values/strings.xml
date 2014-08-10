@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">UES21 Ejercico Feedback 1</string>
+    <string name="title_activity_travel">Travel Activity</string>
+    <string name="action_settings">Settings</string>
+    <string name="city">City:</string>
+    <string name="year">Year:</string>
+    <string name="comments">Comments:</string>
+    <string name="title_activity_edit_travel">Edit Travel Activity</string>
+    <string name="country">Country:</string>
+    <string name="button_send">Send</string>
+    <string name="new_visit_text">New visit:</string>   
+
+</resources>

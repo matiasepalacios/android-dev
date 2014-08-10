@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/city"/>
+    
+    <EditText
+        android:id="@+id/editText_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" android:inputType="text">
+
+        <requestFocus/>
+    </EditText>
+    
+    <TextView
+        android:id="@+id/textView_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/year" />
+
+    <EditText
+        android:id="@+id/editText_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/textView_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country" />
+
+    <EditText
+        android:id="@+id/editText_contry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" android:inputType="text"/>
+    
+    <TextView
+        android:id="@+id/textView_comments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comments" />
+
+    <EditText
+        android:id="@+id/editText_comments"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/button_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/button_send"
+        android:text="@string/button_send" 
+        android:onClick="captureTexts"/>
+   
+</LinearLayout>
