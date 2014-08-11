@@ -16,11 +16,6 @@
         <activity
             android:name=".TravelActivity"
             android:label="@string/title_activity_travel" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".EditTravelActivity"
@@ -31,6 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="TravelListActivity"></activity>
     </application>
 
 </manifest>

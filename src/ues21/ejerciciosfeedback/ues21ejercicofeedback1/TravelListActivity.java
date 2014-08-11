@@ -3,13 +3,25 @@ package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
 import java.util.ArrayList;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class TravelListActivity extends ListActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		/*
+		 * getting the intent and doing stuff with it
+		 */
+		Intent intent = getIntent();
+		String matt = intent.getExtras().getString(EditTravelActivity.NAME);
+		
+		
+		Toast.makeText(TravelListActivity.this, matt,
+				Toast.LENGTH_SHORT).show();
 		
 		ArrayList<TravelInfo> travels = new ArrayList<TravelInfo>();
 		

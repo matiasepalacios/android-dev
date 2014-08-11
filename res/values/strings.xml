@@ -8,7 +8,8 @@
     <string name="year">Year:</string>
     <string name="comments">Comments:</string>
     <string name="title_activity_edit_travel">Edit Travel Activity</string>
-    <string name="country">Country:</string>
+    <string name="country">Country:</string>    
+    <string name="city_name">Nombre de la Ciudad:</string>
     <string name="button_send">Send</string>
     <string name="new_visit_text">New visit:</string>   
 

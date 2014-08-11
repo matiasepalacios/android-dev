@@ -3,12 +3,14 @@
 
     <string name="app_name">UES21 Ejercico Feedback 1</string>
     <string name="title_activity_travel">Travel Activity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Configuración</string>
     <string name="city">Ciudad:</string>
     <string name="year">Año:</string>
     <string name="comments">Comentarios:</string>
+    <string name="title_activity_edit_travel">Edit Travel Activity</string>
     <string name="city_name">Nombre de la Ciudad:</string>
-    <string name="country">País:</string> 
+    <string name="country">País:</string>    
+    <string name="button_send">Send</string>
+    <string name="new_visit_text">New visit:</string>   
 
 </resources>
