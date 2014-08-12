@@ -38,7 +38,7 @@
         android:text="@string/country" />
 
     <EditText
-        android:id="@+id/editText_contry"
+        android:id="@+id/editText_country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10" android:inputType="text"/>

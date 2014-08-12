@@ -20,13 +20,14 @@
         <activity
             android:name=".EditTravelActivity"
             android:label="@string/title_activity_edit_travel" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name="TravelListActivity"></activity>
+        <activity 
+            android:name="TravelListActivity">
+	        <intent-filter>
+	        	<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+	        </intent-filter>
+	    </activity>
     </application>
 
 </manifest>
