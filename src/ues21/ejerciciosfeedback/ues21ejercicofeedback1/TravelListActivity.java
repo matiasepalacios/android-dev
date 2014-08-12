@@ -1,7 +1,6 @@
 package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
 
 import java.util.ArrayList;
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,14 +10,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.Toast;
 
 public class TravelListActivity extends ListActivity implements TravelItemsInterface {
 
 	public static final int REQUEST_CODE_NEW_CITY = 10;
 	public static final int REQUEST_CODE_EDIT_CITY = 20;
-	public static final String ITEM_ID = "ITEM_ID";
 	private TravelAdapter adapter = null;
 
 	@Override
@@ -68,11 +66,21 @@ public class TravelListActivity extends ListActivity implements TravelItemsInter
 				}
 				String name = data.getExtras().getString(NAME);
 				String country = data.getExtras().getString(COUNTRY);
-				int year = Integer.parseInt(data.getExtras().getString(YEAR));
-				String comments = data.getExtras().getString(EditTravelActivity.COMMENTS);
+				int year = data.getExtras().getInt(YEAR);
 
-				this.adapter.add(new TravelInfo(name,country, year, comments));
-				setListAdapter(adapter);
+				if (data.hasExtra(COMMENTS)) {
+
+					String comments = data.getExtras().getString(COMMENTS);
+
+					this.adapter.add(new TravelInfo(name,country, year, comments));
+
+				} else {
+
+					this.adapter.add(new TravelInfo(name,country, year));
+
+				}
+
+				setListAdapter(this.adapter);
 			}
 		} catch (Exception e) {
 			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -106,7 +114,6 @@ public class TravelListActivity extends ListActivity implements TravelItemsInter
 
 	private void deleteItem(long id){		
 		this.adapter.remove(this.adapter.getItem((int) id));
-		this.adapter.notifyDataSetChanged();
 	}
 
 	private void editItem(long id) {

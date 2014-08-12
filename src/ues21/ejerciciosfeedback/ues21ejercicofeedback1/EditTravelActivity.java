@@ -18,14 +18,16 @@ public class EditTravelActivity extends Activity implements TravelItemsInterface
 
 		setContentView(R.layout.linear_layout_edit_travel_activity);
 
-		this.putEditInfo();
 
-		this.clickButtonSend();
+		Intent intent = getIntent();
+		
+		this.putEditInfo(intent);
+
+		this.clickButtonSend(intent);
 	}
 
-	public void putEditInfo() {
+	public void putEditInfo(Intent intent) {
 		try {
-			Intent intent = getIntent();
 			String name;
 			int year;
 			String country;
@@ -60,7 +62,7 @@ public class EditTravelActivity extends Activity implements TravelItemsInterface
 
 	}
 
-	public void clickButtonSend() {
+	public void clickButtonSend(final Intent intent) {
 		Button button = (Button) findViewById(R.id.button_send);
 		button.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -70,15 +72,14 @@ public class EditTravelActivity extends Activity implements TravelItemsInterface
 					String textCountry = getTextCountry();
 					String textComments = getTextComments();
 
-					/*
-					 * Instantiate Intent 
-					 */
-
-					Intent intent = new Intent();
+					
 					intent.putExtra(NAME, textCity);
 					intent.putExtra(YEAR, textYear);
 					intent.putExtra(COUNTRY, textCountry);
-					intent.putExtra(COMMENTS, textComments);
+					
+					if (!getTextComments().trim().equals("")) {
+						intent.putExtra(COMMENTS, textComments);
+					}
 					setResult(RESULT_OK,intent);
 					finish();
 
