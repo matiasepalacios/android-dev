@@ -7,50 +7,162 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-public class EditTravelActivity extends Activity {
-	
-	public final static String NAME = "NAME";
-	public final static String YEAR = "YEAR";
-	public final static String COUNTRY = "COUNTRY";
-	public final static String COMMENTS = "COMMENTS";
+public class EditTravelActivity extends Activity implements TravelItemsInterface {
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.linear_layout_edit_travel_activity);
+
+		this.putEditInfo();
+
 		this.clickButtonSend();
+	}
+
+	public void putEditInfo() {
+		try {
+			Intent intent = getIntent();
+			String name;
+			int year;
+			String country;
+			String comments;
+			if (intent.hasExtra(NAME)) {
+				name = intent.getExtras().getString(NAME);
+				EditText mTextCity = (EditText) findViewById(R.id.editText_city);
+				mTextCity.setText(name);
+			}
+
+			if (intent.hasExtra(YEAR)) {
+				year = (int) intent.getExtras().getInt(YEAR);
+				EditText mTextYear = (EditText) findViewById(R.id.editText_year);
+				mTextYear.setText(String.valueOf(year));
+			}
+
+			if (intent.hasExtra(COUNTRY)) {
+				country = intent.getExtras().getString(COUNTRY);
+				EditText mTextCountry = (EditText) findViewById(R.id.editText_country);
+				mTextCountry.setText(country);
+			}
+
+			if (intent.hasExtra(COMMENTS)) {
+				comments = intent.getExtras().getString(COMMENTS);
+				EditText mTextComments = (EditText) findViewById(R.id.editText_comments);
+				mTextComments.setText(comments);
+			}		
+		} catch (Exception e) {
+			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+		}
+
+
 	}
 
 	public void clickButtonSend() {
 		Button button = (Button) findViewById(R.id.button_send);
 		button.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				if (validateFields()){
+					String textCity = getTextCity();
+					int textYear = getTextYear();				
+					String textCountry = getTextCountry();
+					String textComments = getTextComments();
 
-				EditText mTextCity = (EditText) findViewById(R.id.editText_city);
-				EditText mTextYear = (EditText) findViewById(R.id.editText_year);
-				EditText mTextCountry = (EditText) findViewById(R.id.editText_country);
-				EditText mTextComments = (EditText) findViewById(R.id.editText_comments);				
-				String textCity = mTextCity.getText().toString();
-				String textYear = mTextYear.getText().toString();				
-				String textCountry = mTextCountry.getText().toString();
-				String textComments = mTextComments.getText().toString();
-				
-				/*
-				 * Instantiate Intent 
-				 */
-				
-				Intent intent = new Intent();
-				intent.putExtra(NAME, textCity);
-				intent.putExtra(YEAR, textYear);
-				intent.putExtra(COUNTRY, textCountry);
-				intent.putExtra(COMMENTS, textComments);
-				setResult(RESULT_OK,intent);
-				finish();
+					/*
+					 * Instantiate Intent 
+					 */
+
+					Intent intent = new Intent();
+					intent.putExtra(NAME, textCity);
+					intent.putExtra(YEAR, textYear);
+					intent.putExtra(COUNTRY, textCountry);
+					intent.putExtra(COMMENTS, textComments);
+					setResult(RESULT_OK,intent);
+					finish();
+
+				}
 
 			}
 		});
 	}
+
+	public boolean validateFields() {
+
+		boolean error = false;
+
+		EditText mTextYear = (EditText) findViewById(R.id.editText_year);
+		String textYear = mTextYear.getText().toString();
+		
+
+		try {
+
+			if (this.getTextCity().trim().equals("")) {
+				
+				throw new Exception(this.getString(R.string.error_message_empty_city));
+
+			} else if (textYear.trim().equals("")) {				
+
+		        mTextYear.requestFocus();
+				
+				throw new Exception(this.getString(R.string.error_message_empty_year));
+				
+			} else if (!textYear.trim().equals("")) {
+
+				mTextYear.requestFocus();
+				
+				try {
+
+					Integer.parseInt(textYear);
+
+				} catch (NumberFormatException e) {
+
+					throw new Exception(this.getString(R.string.error_message_bad_year_format));
+
+				}
+				
+				if (this.getTextCountry().trim().equals("")) {
+					
+					throw new Exception(this.getString(R.string.error_message_empty_country));
+					
+				}
+
+				
+			}
+
+		} catch (Exception e) {
+			error = true;
+			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+		}
+
+		return (error == false) ? true : false;
+	}
+
+
+	protected String getTextCity() {
+		EditText mTextCity = (EditText) findViewById(R.id.editText_city);
+		mTextCity.requestFocus();
+		return mTextCity.getText().toString();
+	}
+
+	protected int getTextYear() {
+		EditText mTextYear = (EditText) findViewById(R.id.editText_year);
+        mTextYear.requestFocus();
+		return Integer.parseInt(mTextYear.getText().toString());
+	}
+
+	protected String getTextComments() {
+		EditText mTextComments = (EditText) findViewById(R.id.editText_comments);
+		mTextComments.requestFocus();
+		return mTextComments.getText().toString();
+	}
+
+	protected String getTextCountry() {
+		EditText mTextCountry = (EditText) findViewById(R.id.editText_country);
+		mTextCountry.requestFocus();
+		return mTextCountry.getText().toString();
+	}
+
 
 }

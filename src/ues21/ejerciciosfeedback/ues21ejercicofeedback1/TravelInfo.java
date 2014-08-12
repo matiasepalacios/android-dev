@@ -53,7 +53,7 @@ public class TravelInfo {
 	}
 
 	public int getYear() {
-		return year;
+		return (int) year;
 	}
 
 	public void setYear(int year) {
