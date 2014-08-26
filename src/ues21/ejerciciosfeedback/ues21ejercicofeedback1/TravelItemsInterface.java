@@ -7,5 +7,6 @@ public interface TravelItemsInterface {
 	public final static String COUNTRY = "COUNTRY";
 	public final static String COMMENTS = "COMMENTS";
 	public static final String ITEM_ID = "ITEM_ID";
+	public final static String _ID = "ID";
 	
 }
