@@ -1,9 +1,11 @@
 package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
 
-import java.util.ArrayList;
 import android.app.ListActivity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -12,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 public class TravelListActivity extends ListActivity implements
@@ -19,20 +22,21 @@ public class TravelListActivity extends ListActivity implements
 
 	public static final int REQUEST_CODE_NEW_CITY = 10;
 	public static final int REQUEST_CODE_EDIT_CITY = 20;
-	private TravelAdapter adapter = null;
-	private TravelsDatabaseHelper dbHelper = null;
+	private static final int _INIT = 1;
+	private static final int _RELOAD = 2;
+	private SimpleCursorAdapter adapter = null;
+
+	private static final String[] PROJECTION = { _ID, NAME, COUNTRY, YEAR,
+			COMMENTS };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		dbHelper = this.getDBHelper();
 
-		ArrayList<TravelInfo> travels = dbHelper.getTravelsList();
+		this.loadList(_INIT);
 
-		this.adapter = new TravelAdapter(this, travels);
 		registerForContextMenu(getListView());
-		setListAdapter(adapter);
+		setListAdapter(this.adapter);
 
 	}
 
@@ -64,43 +68,37 @@ public class TravelListActivity extends ListActivity implements
 				String country = data.getExtras().getString(COUNTRY);
 				int year = data.getExtras().getInt(YEAR);
 
+				ContentValues values = new ContentValues();
+				values.put(NAME, name);
+				values.put(COUNTRY, country);
+				values.put(YEAR, year);
+
 				if (data.hasExtra(COMMENTS)) {
 
 					String comments = data.getExtras().getString(COMMENTS);
-
-					if (requestCode == REQUEST_CODE_EDIT_CITY) {
-						this.deleteItem(data.getExtras().getLong(ITEM_ID));
-						this.adapter.insert(new TravelInfo(name, country, year,
-								comments),
-								(int) data.getExtras().getLong(ITEM_ID));
-					} else {
-//						this.adapter.add(new TravelInfo(name, country, year,
-//								comments));
-
-						dbHelper = this.getDBHelper();
-						dbHelper.insertTravel(TravelsDatabaseHelper.db, name, country, year, comments);
-						
-					}
-
-				} else {
-
-					if (requestCode == REQUEST_CODE_EDIT_CITY) {
-						this.deleteItem(data.getExtras().getLong(ITEM_ID));
-						this.adapter.insert(
-								new TravelInfo(name, country, year), (int) data
-										.getExtras().getLong(ITEM_ID));
-					} else {
-						this.adapter.add(new TravelInfo(name, country, year));
-					}
+					values.put(COMMENTS, comments);
 
 				}
 
-				setListAdapter(this.adapter);
+				if (requestCode == REQUEST_CODE_EDIT_CITY) {
+
+					// TODO: code to edit
+
+					Uri uri = Uri.parse(TravelsProvider.CONTENT_URI + "/"
+							+ data.getExtras().getInt(ITEM_ID));
+					getContentResolver().update(uri, values, null, null);
+				} else {
+
+					getContentResolver().insert(TravelsProvider.CONTENT_URI,
+							values);
+				}
+
 			}
 		} catch (Exception e) {
 			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
 		}
 
+		this.loadList(_RELOAD);
 	}
 
 	@Override
@@ -128,25 +126,58 @@ public class TravelListActivity extends ListActivity implements
 	}
 
 	private void deleteItem(long id) {
-		this.adapter.remove(this.adapter.getItem((int) id));
+		Uri uri = Uri.parse(TravelsProvider.CONTENT_URI + "/" + id);
+		getContentResolver().delete(uri, null, null);
+		this.loadList(_RELOAD);
 	}
 
 	private void editItem(long id) {
-		TravelInfo item = this.adapter.getItem((int) id);
-		Intent intent = new Intent(this, EditTravelActivity.class);
-		intent.putExtra(NAME, item.getCity());
-		intent.putExtra(YEAR, item.getYear());
-		intent.putExtra(COUNTRY, item.getCountry());
-		intent.putExtra(COMMENTS, item.getComments());
-		intent.putExtra(ITEM_ID, id);
-		startActivityForResult(intent, REQUEST_CODE_EDIT_CITY);
-	}
-	
-	private TravelsDatabaseHelper getDBHelper() {
-		if (this.dbHelper == null) {
-			this.dbHelper = new TravelsDatabaseHelper(this);
+
+		Cursor item = this.getTravel((int) id);
+
+		if (item != null) {
+			item.moveToFirst();
+			Intent intent = new Intent(this, EditTravelActivity.class);
+			intent.putExtra(NAME,
+					item.getString(item.getColumnIndexOrThrow(NAME)));
+			intent.putExtra(YEAR,
+					item.getString(item.getColumnIndexOrThrow(YEAR)));
+			intent.putExtra(COUNTRY,
+					item.getString(item.getColumnIndexOrThrow(COUNTRY)));
+			intent.putExtra(COMMENTS,
+					item.getString(item.getColumnIndexOrThrow(COMMENTS)));
+			intent.putExtra(ITEM_ID, (int) id);
+			startActivityForResult(intent, REQUEST_CODE_EDIT_CITY);
 		}
-		return this.dbHelper;
+
+	}
+
+	private void loadList(int init) {
+		ContentResolver cr = getContentResolver();
+
+		Cursor c = cr.query(TravelsProvider.CONTENT_URI, PROJECTION, null,
+				null, null);
+
+		String[] from = new String[] { TravelsDatabaseHelper.NAME };
+		int[] to = new int[] { android.R.id.text1 };
+
+		switch (init) {
+		case _INIT:
+			this.adapter = new TravelsCursorAdapter(this,
+					android.R.layout.simple_list_item_2, c, from, to, 0);
+		case _RELOAD:
+			this.adapter.changeCursor(c);
+		}
+
+	}
+
+	private Cursor getTravel(int id) {
+		Uri uri = Uri.parse(TravelsProvider.CONTENT_URI + "/" + id);
+
+		Cursor item = getContentResolver().query(uri, PROJECTION, null, null,
+				null);
+
+		return item;
 	}
 
 }
