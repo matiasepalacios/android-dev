@@ -141,7 +141,7 @@ public class TravelListActivity extends ListActivity implements
 			intent.putExtra(NAME,
 					item.getString(item.getColumnIndexOrThrow(NAME)));
 			intent.putExtra(YEAR,
-					item.getString(item.getColumnIndexOrThrow(YEAR)));
+					item.getInt(item.getColumnIndexOrThrow(YEAR)));
 			intent.putExtra(COUNTRY,
 					item.getString(item.getColumnIndexOrThrow(COUNTRY)));
 			intent.putExtra(COMMENTS,

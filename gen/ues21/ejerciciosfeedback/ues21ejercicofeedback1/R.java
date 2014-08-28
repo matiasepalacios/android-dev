@@ -26,27 +26,23 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int button_send=0x7f08000a;
-        public static final int editText1=0x7f080001;
-        public static final int editText_city=0x7f080003;
-        public static final int editText_comments=0x7f080009;
-        public static final int editText_country=0x7f080007;
-        public static final int editText_year=0x7f080005;
-        public static final int group1=0x7f08000b;
-        public static final int menu_item_delete=0x7f08000d;
-        public static final int menu_item_edit_travel=0x7f08000c;
-        public static final int menu_new_travel=0x7f08000e;
-        public static final int textView1=0x7f080000;
-        public static final int textView_city=0x7f080002;
-        public static final int textView_comments=0x7f080008;
-        public static final int textView_country=0x7f080006;
-        public static final int textView_year=0x7f080004;
+        public static final int button_send=0x7f080008;
+        public static final int editText_city=0x7f080001;
+        public static final int editText_comments=0x7f080007;
+        public static final int editText_country=0x7f080005;
+        public static final int editText_year=0x7f080003;
+        public static final int group1=0x7f080009;
+        public static final int menu_item_delete=0x7f08000b;
+        public static final int menu_item_edit_travel=0x7f08000a;
+        public static final int menu_new_travel=0x7f08000c;
+        public static final int textView_city=0x7f080000;
+        public static final int textView_comments=0x7f080006;
+        public static final int textView_country=0x7f080004;
+        public static final int textView_year=0x7f080002;
     }
     public static final class layout {
-        public static final int activity_edit_travel=0x7f030000;
-        public static final int activity_travel=0x7f030001;
-        public static final int activity_travel_list=0x7f030002;
-        public static final int linear_layout_edit_travel_activity=0x7f030003;
+        public static final int activity_travel=0x7f030000;
+        public static final int linear_layout_edit_travel_activity=0x7f030001;
     }
     public static final class menu {
         public static final int long_click_travel_list_activity_menu=0x7f070000;

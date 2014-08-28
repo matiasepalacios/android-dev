@@ -39,8 +39,12 @@ final class TravelsCursorAdapter extends SimpleCursorAdapter {
 		String name = c.getString(c.getColumnIndex(TravelsDatabaseHelper.NAME));
 		String country = c.getString(c
 				.getColumnIndex(TravelsDatabaseHelper.COUNTRY));
+		int year = c.getInt(c.getColumnIndex(TravelsDatabaseHelper.YEAR));
+		
+		
+		String text2 = country + " | " + year;
 		holder.text1.setText(name);
-		holder.text2.setText(country);
+		holder.text2.setText(text2);
 
 	}
 
