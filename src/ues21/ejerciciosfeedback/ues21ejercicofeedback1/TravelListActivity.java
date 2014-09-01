@@ -1,5 +1,6 @@
 package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
 
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.dialogs.TravelEditDialog;
 import android.app.ListActivity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -51,8 +52,12 @@ public class TravelListActivity extends ListActivity implements
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_new_travel:
-			Intent intent = new Intent(this, EditTravelActivity.class);
-			startActivityForResult(intent, REQUEST_CODE_NEW_CITY);
+
+			TravelEditDialog dialog = new TravelEditDialog();
+			dialog.createNewTravel(this);
+//			Intent intent = new Intent(this, EditTravelActivity.class);
+//			startActivityForResult(intent, REQUEST_CODE_NEW_CITY);
+			
 			break;
 		}
 
@@ -140,8 +145,7 @@ public class TravelListActivity extends ListActivity implements
 			Intent intent = new Intent(this, EditTravelActivity.class);
 			intent.putExtra(NAME,
 					item.getString(item.getColumnIndexOrThrow(NAME)));
-			intent.putExtra(YEAR,
-					item.getInt(item.getColumnIndexOrThrow(YEAR)));
+			intent.putExtra(YEAR, item.getInt(item.getColumnIndexOrThrow(YEAR)));
 			intent.putExtra(COUNTRY,
 					item.getString(item.getColumnIndexOrThrow(COUNTRY)));
 			intent.putExtra(COMMENTS,
@@ -170,6 +174,11 @@ public class TravelListActivity extends ListActivity implements
 		}
 
 	}
+	
+	public void reload() {
+		this.loadList(2);
+	}
+	
 
 	private Cursor getTravel(int id) {
 		Uri uri = Uri.parse(TravelsProvider.CONTENT_URI + "/" + id);

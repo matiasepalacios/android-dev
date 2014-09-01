@@ -9,64 +9,66 @@ package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
 
 public final class R {
     public static final class attr {
-    }
-    public static final class dimen {
-        /**  Default screen margins, per the Android Design guidelines. 
-
-         Example customization of dimensions originally defined in res/values/dimens.xml
-         (such as screen margins) for screens with more than 820dp of available width. This
-         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
-    
- Default screen margins, per the Android Design guidelines. 
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int buttonBarButtonStyle=0x7f010001;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarStyle=0x7f010000;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int button_send=0x7f080008;
-        public static final int editText_city=0x7f080001;
-        public static final int editText_comments=0x7f080007;
-        public static final int editText_country=0x7f080005;
-        public static final int editText_year=0x7f080003;
-        public static final int group1=0x7f080009;
-        public static final int menu_item_delete=0x7f08000b;
-        public static final int menu_item_edit_travel=0x7f08000a;
-        public static final int menu_new_travel=0x7f08000c;
-        public static final int textView_city=0x7f080000;
-        public static final int textView_comments=0x7f080006;
-        public static final int textView_country=0x7f080004;
-        public static final int textView_year=0x7f080002;
+        public static final int button_cancel=0x7f070008;
+        public static final int button_send=0x7f070009;
+        public static final int editText_city=0x7f070001;
+        public static final int editText_comments=0x7f070007;
+        public static final int editText_country=0x7f070005;
+        public static final int editText_year=0x7f070003;
+        public static final int group1=0x7f07000a;
+        public static final int menu_item_delete=0x7f07000c;
+        public static final int menu_item_edit_travel=0x7f07000b;
+        public static final int menu_new_travel=0x7f07000d;
+        public static final int textView_city=0x7f070000;
+        public static final int textView_comments=0x7f070006;
+        public static final int textView_country=0x7f070004;
+        public static final int textView_year=0x7f070002;
     }
     public static final class layout {
         public static final int activity_travel=0x7f030000;
         public static final int linear_layout_edit_travel_activity=0x7f030001;
     }
     public static final class menu {
-        public static final int long_click_travel_list_activity_menu=0x7f070000;
-        public static final int travel_list_activity_menu=0x7f070001;
+        public static final int long_click_travel_list_activity_menu=0x7f060000;
+        public static final int travel_list_activity_menu=0x7f060001;
     }
     public static final class string {
-        public static final int action_settings=0x7f050002;
-        public static final int app_name=0x7f050000;
-        public static final int button_send=0x7f050009;
-        public static final int city=0x7f050003;
-        public static final int city_name=0x7f050008;
-        public static final int comments=0x7f050005;
-        public static final int country=0x7f050007;
-        public static final int delete_travel=0x7f05000d;
-        public static final int edit_travel=0x7f05000c;
-        public static final int error_message_bad_year_format=0x7f05000e;
-        public static final int error_message_empty_city=0x7f050010;
-        public static final int error_message_empty_country=0x7f050011;
-        public static final int error_message_empty_year=0x7f05000f;
-        public static final int menu_new_travel=0x7f05000b;
-        public static final int new_visit_text=0x7f05000a;
-        public static final int title_activity_edit_travel=0x7f050006;
-        public static final int title_activity_travel=0x7f050001;
-        public static final int year=0x7f050004;
+        public static final int app_name=0x7f040000;
+        public static final int button_cancel=0x7f040008;
+        /**  <string name="city_name">City Name:</string> 
+ <string name="city_name">Nombre de la ciudad:</string> 
+         */
+        public static final int button_send=0x7f040007;
+        /**  <string name="action_settings">Settings</string> 
+ <string name="action_settings">Ajustes</string> 
+         */
+        public static final int city=0x7f040002;
+        public static final int comments=0x7f040004;
+        public static final int country=0x7f040006;
+        public static final int delete_travel=0x7f04000c;
+        public static final int edit_travel=0x7f04000b;
+        public static final int error_message_bad_year_format=0x7f04000d;
+        public static final int error_message_empty_city=0x7f04000f;
+        public static final int error_message_empty_country=0x7f040010;
+        public static final int error_message_empty_year=0x7f04000e;
+        public static final int menu_new_travel=0x7f04000a;
+        public static final int new_visit_text=0x7f040009;
+        public static final int title_activity_edit_travel=0x7f040005;
+        public static final int title_activity_travel=0x7f040001;
+        public static final int year=0x7f040003;
     }
     public static final class style {
         /** 
@@ -99,12 +101,49 @@ public final class R {
             backward-compatibility can go here.
         
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f050000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f050001;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a ButtonBarContainerTheme.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarButtonStyle ues21.ejerciciosfeedback.ues21ejercicofeedback1:buttonBarButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarStyle ues21.ejerciciosfeedback.ues21ejercicofeedback1:buttonBarStyle}</code></td><td></td></tr>
+           </table>
+           @see #ButtonBarContainerTheme_buttonBarButtonStyle
+           @see #ButtonBarContainerTheme_buttonBarStyle
+         */
+        public static final int[] ButtonBarContainerTheme = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link ues21.ejerciciosfeedback.ues21ejercicofeedback1.R.attr#buttonBarButtonStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name ues21.ejerciciosfeedback.ues21ejercicofeedback1:buttonBarButtonStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
+        /**
+          <p>This symbol is the offset where the {@link ues21.ejerciciosfeedback.ues21ejercicofeedback1.R.attr#buttonBarStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name ues21.ejerciciosfeedback.ues21ejercicofeedback1:buttonBarStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
+    };
 }

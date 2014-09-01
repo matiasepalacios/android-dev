@@ -57,11 +57,27 @@
         android:ems="10"
         android:inputType="textMultiLine" />
 
-    <Button
-        android:id="@+id/button_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/button_send"
-        android:text="@string/button_send"/>
+    <LinearLayout
+        style="@attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/button_cancel"
+            style="@attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/button_cancel"
+            android:text="@string/button_cancel" />
+
+        <Button
+            android:id="@+id/button_send"
+            style="@attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/button_send"
+            android:text="@string/button_send" />
+
+    </LinearLayout>
    
 </LinearLayout>

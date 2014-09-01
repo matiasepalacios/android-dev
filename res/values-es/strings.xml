@@ -3,21 +3,22 @@
 
     <string name="app_name">UES21 Ejercicio Feedback</string>
     <string name="title_activity_travel">Travel Activity</string>
-    <string name="action_settings">Settings</string>
-    <string name="city">City:</string>
-    <string name="year">Year:</string>
-    <string name="comments">Comments:</string>
+    <!-- <string name="action_settings">Ajustes</string> -->
+    <string name="city">Ciudad:</string>
+    <string name="year">Año:</string>
+    <string name="comments">Comentarios:</string>
     <string name="title_activity_edit_travel">Edit Travel Activity</string>
-    <string name="country">Country:</string>    
-    <string name="city_name">City Name:</string>
-    <string name="button_send">Send</string>
-    <string name="new_visit_text">New visit:</string>
-    <string name="menu_new_travel">New Travel</string>
-    <string name="edit_travel">Edit Travel</string>
-    <string name="delete_travel">Delete Travel</string>  
-    <string name="error_message_bad_year_format">Please, enter a number on the "year" field.</string>
-    <string name="error_message_empty_year">Year is required.</string>  
-    <string name="error_message_empty_city">City name is required.</string> 
-    <string name="error_message_empty_country">Country is required.</string>     
+    <string name="country">País:</string>    
+    <!-- <string name="city_name">Nombre de la ciudad:</string> -->
+    <string name="button_send">Enviar</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="new_visit_text">Nueva visita:</string>
+    <string name="menu_new_travel">Nuevo viaje</string>
+    <string name="edit_travel">Editar viaje</string>
+    <string name="delete_travel">Borrar viaje</string>  
+    <string name="error_message_bad_year_format">Por favor, ingresar solo números en el campo "año".</string>
+    <string name="error_message_empty_year">Año es requerido.</string>  
+    <string name="error_message_empty_city">El nombre de la ciudad es requerido.</string> 
+    <string name="error_message_empty_country">El país es requerido.</string>       
 
 </resources>
