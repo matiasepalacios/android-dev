@@ -1,4 +1,4 @@
-package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
+package ues21.ejerciciosfeedback.ues21ejercicofeedback1.interfaces;
 
 public interface TravelItemsInterface {
 

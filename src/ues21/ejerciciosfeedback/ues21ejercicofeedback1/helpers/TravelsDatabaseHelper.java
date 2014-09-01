@@ -1,8 +1,9 @@
 /**
  * 
  */
-package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
+package ues21.ejerciciosfeedback.ues21ejercicofeedback1.helpers;
 
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.interfaces.TravelItemsInterface;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;

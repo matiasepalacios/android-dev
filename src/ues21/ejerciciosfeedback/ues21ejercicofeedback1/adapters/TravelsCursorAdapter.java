@@ -1,6 +1,7 @@
-package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
+package ues21.ejerciciosfeedback.ues21ejercicofeedback1.adapters;
 
-import ues21.ejerciciosfeedback.ues21ejercicofeedback1.TravelAdapter.ViewHolder;
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.adapters.TravelAdapter.ViewHolder;
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.helpers.TravelsDatabaseHelper;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -9,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-final class TravelsCursorAdapter extends SimpleCursorAdapter {
+public final class TravelsCursorAdapter extends SimpleCursorAdapter {
 
 	private LayoutInflater mInflater;
 

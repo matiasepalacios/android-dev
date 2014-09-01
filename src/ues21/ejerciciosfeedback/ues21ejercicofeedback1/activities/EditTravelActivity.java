@@ -1,5 +1,7 @@
-package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
+package ues21.ejerciciosfeedback.ues21ejercicofeedback1.activities;
 
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.R;
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.interfaces.TravelItemsInterface;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

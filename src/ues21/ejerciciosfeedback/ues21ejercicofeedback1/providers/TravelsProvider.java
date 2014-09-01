@@ -1,5 +1,7 @@
-package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
+package ues21.ejerciciosfeedback.ues21ejercicofeedback1.providers;
 
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.Travels;
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.helpers.TravelsDatabaseHelper;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;

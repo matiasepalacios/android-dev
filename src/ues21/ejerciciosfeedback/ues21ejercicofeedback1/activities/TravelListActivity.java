@@ -1,6 +1,11 @@
-package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
+package ues21.ejerciciosfeedback.ues21ejercicofeedback1.activities;
 
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.R;
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.adapters.TravelsCursorAdapter;
 import ues21.ejerciciosfeedback.ues21ejercicofeedback1.dialogs.TravelEditDialog;
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.helpers.TravelsDatabaseHelper;
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.interfaces.TravelItemsInterface;
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.providers.TravelsProvider;
 import android.app.ListActivity;
 import android.content.ContentResolver;
 import android.content.ContentValues;

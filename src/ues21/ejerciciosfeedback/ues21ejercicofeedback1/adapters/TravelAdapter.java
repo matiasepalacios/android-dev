@@ -1,10 +1,12 @@
 /**
  * 
  */
-package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
+package ues21.ejerciciosfeedback.ues21ejercicofeedback1.adapters;
 
 import java.util.ArrayList;
 
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.R;
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.TravelInfo;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

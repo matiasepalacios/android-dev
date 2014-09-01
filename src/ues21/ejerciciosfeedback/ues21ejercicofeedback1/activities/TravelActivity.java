@@ -1,5 +1,6 @@
-package ues21.ejerciciosfeedback.ues21ejercicofeedback1;
+package ues21.ejerciciosfeedback.ues21ejercicofeedback1.activities;
 
+import ues21.ejerciciosfeedback.ues21ejercicofeedback1.R;
 import android.app.Activity;
 import android.os.Bundle;
 
