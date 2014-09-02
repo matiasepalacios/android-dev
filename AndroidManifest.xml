@@ -16,13 +16,13 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="ues21.ejerciciosfeedback.ues21ejercicofeedback1.activities.TravelActivity"
+            android:name=".activities.TravelActivity"
             android:label="@string/title_activity_travel" />
         <activity
-            android:name="21.ejerciciosfeedback.ues21ejercicofeedback1.activities.EditTravelActivity"
+            android:name=".activities.EditTravelActivity"
             android:label="@string/title_activity_edit_travel" >
         </activity>
-        <activity android:name="ues21.ejerciciosfeedback.ues21ejercicofeedback1.activities.TravelListActivity" >
+        <activity android:name=".activities.TravelListActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +31,7 @@
         </activity>
 
         <provider
-            android:name="TravelsProvider"
+            android:name=".providers.TravelsProvider"
             android:authorities="ues21.ejerciciosfeedback.travellist"
             android:exported="false" />
     </application>

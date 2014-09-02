@@ -1,11 +1,14 @@
 package ues21.ejerciciosfeedback.ues21ejercicofeedback1.activities;
 
+import java.util.HashMap;
+
 import ues21.ejerciciosfeedback.ues21ejercicofeedback1.R;
 import ues21.ejerciciosfeedback.ues21ejercicofeedback1.adapters.TravelsCursorAdapter;
 import ues21.ejerciciosfeedback.ues21ejercicofeedback1.dialogs.TravelEditDialog;
 import ues21.ejerciciosfeedback.ues21ejercicofeedback1.helpers.TravelsDatabaseHelper;
 import ues21.ejerciciosfeedback.ues21ejercicofeedback1.interfaces.TravelItemsInterface;
 import ues21.ejerciciosfeedback.ues21ejercicofeedback1.providers.TravelsProvider;
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -40,10 +43,16 @@ public class TravelListActivity extends ListActivity implements
 		super.onCreate(savedInstanceState);
 
 		this.loadList(_INIT);
-
+		this.createActionBar();
 		registerForContextMenu(getListView());
 		setListAdapter(this.adapter);
 
+	}
+
+	public void createActionBar() {
+		ActionBar actionBar = getActionBar();
+		actionBar.setBackgroundDrawable(getWallpaper());
+		// actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 	}
 
 	@Override
@@ -60,9 +69,7 @@ public class TravelListActivity extends ListActivity implements
 
 			TravelEditDialog dialog = new TravelEditDialog();
 			dialog.createNewTravel(this);
-//			Intent intent = new Intent(this, EditTravelActivity.class);
-//			startActivityForResult(intent, REQUEST_CODE_NEW_CITY);
-			
+
 			break;
 		}
 
@@ -156,7 +163,19 @@ public class TravelListActivity extends ListActivity implements
 			intent.putExtra(COMMENTS,
 					item.getString(item.getColumnIndexOrThrow(COMMENTS)));
 			intent.putExtra(ITEM_ID, (int) id);
-			startActivityForResult(intent, REQUEST_CODE_EDIT_CITY);
+			HashMap<String, String> data = new HashMap<String, String>();
+			data.put(NAME, item.getString(item.getColumnIndexOrThrow(NAME)));
+			data.put(YEAR, item.getString(item.getColumnIndexOrThrow(YEAR)));
+			data.put(COUNTRY,
+					item.getString(item.getColumnIndexOrThrow(COUNTRY)));
+			data.put(COMMENTS,
+					item.getString(item.getColumnIndexOrThrow(COMMENTS)));
+			data.put(ITEM_ID, String.valueOf(id));
+
+			TravelEditDialog dialog = new TravelEditDialog();
+			dialog.editTravel(this, data);
+			// startActivityForResult(intent, REQUEST_CODE_EDIT_CITY);
+
 		}
 
 	}
@@ -179,11 +198,10 @@ public class TravelListActivity extends ListActivity implements
 		}
 
 	}
-	
+
 	public void reload() {
 		this.loadList(2);
 	}
-	
 
 	private Cursor getTravel(int id) {
 		Uri uri = Uri.parse(TravelsProvider.CONTENT_URI + "/" + id);
